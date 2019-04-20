@@ -1,0 +1,48 @@
+    def crear():
+            
+        marca= input('Ingrese marca del dispositivo movil:  ')
+        modelo= input(f'Ingrese el modelo del dispositivo movil marca {marca}:  ')
+        precio= input(f'Ingrese precio del dispositivo {marca}-{modelo}:  ')    
+
+        try:
+            path="./inventario.txt"
+            archivo_a_escribir = open(path,mode='a+')
+            archivo_a_escribir.writelines(f'{marca}     {modelo}     {precio}\n')
+            archivo_a_escribir.close() 
+
+        except Exception as error:
+            
+            return f'Error en el archivo: {error}'
+    
+    def listar():
+
+        print('LISTADO DE PRODUCTOS DISPONIBLES')
+
+        try:
+            path="./inventario.txt"
+            archivo_a_leer = open(path,mode='r')
+            for line in archivo_a_leer.readlines: 
+                print(f'{line}')
+
+        except Exception as error:
+
+            print(f'Error: {error}')
+
+
+
+def switch_accion(): 
+    accionAbuscar=input('Ingrese numero de la accion a realizar \n 1.- Crear \n 2.- Listar \n 3.- Eliminar \n')
+    return {'crear':crear()
+            }[accionAbuscar]
+       
+  
+
+
+    
+
+        
+switch_accion()
+
+
+
+
